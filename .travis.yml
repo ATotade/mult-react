@@ -22,3 +22,14 @@ after_success:
   - docker push ashtotade/multi-nginx
   - docker push ashtotade/multi-server
   - docker push ashtotade/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: 'ap-south-1'
+  app: 'multi-react'
+  env: 'Multireact-env'
+  bucket_name: 'elasticbeanstalk-ap-south-1-642254630239'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
